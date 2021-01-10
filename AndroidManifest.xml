@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cpu"
+
+    android:versionCode="7"
+    android:versionName="1.0" >
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="16" />
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.front" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.front.autofocus" android:required="false"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="Asisten">
+
+        <activity
+            android:name=".MainAsisten"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity 
+            android:name=".MainBrowser"
+            android:theme="@style/AppTheme"
+            android:label="Ai browser">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http"/>
+                <data android:scheme="https"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainEditor" ></activity>
+        <activity android:name=".MainFileManager" android:label="Editor ai">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.EDIT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.GADGET"/>
+                <data android:host="*" android:mimeType="*/*" android:pathPattern=".*\\.txt" android:scheme="file"/>
+                <data android:host="*" android:mimeType="*/*" android:pathPattern=".*\\.php" android:scheme="file"/>
+                <data android:host="*" android:mimeType="*/*" android:pathPattern=".*\\.css" android:scheme="file"/>
+                <data android:host="*" android:mimeType="*/*" android:pathPattern=".*\\.js" android:scheme="file"/>
+                <data android:host="*" android:mimeType="*/*" android:pathPattern=".*\\.html" android:scheme="file"/>
+                <data android:host="*" android:mimeType="*/*" android:pathPattern=".*\\..*" android:scheme="file"/>
+                <data android:host="*" android:mimeType="*/*" android:pathPattern=".*" android:scheme="file"/>
+                <data android:mimeType="*/*"/>
+            </intent-filter>
+        </activity>
+        
+        <activity 
+            android:name="com.tools.AudioPreview"
+            android:theme="@android:style/Theme.Dialog"
+            android:taskAffinity=""
+            android:label="Musik al"
+            android:excludeFromRecents="true" 
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="file"/>
+                <data android:mimeType="audio/*"/>
+                <data android:mimeType="application/ogg"/>
+                <data android:mimeType="application/x-ogg"/>
+                <data android:mimeType="application/itunes"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http" />
+                <data android:mimeType="audio/*"/>
+                <data android:mimeType="application/ogg"/>
+                <data android:mimeType="application/x-ogg"/>
+                <data android:mimeType="application/itunes"/>
+            </intent-filter>
+            <intent-filter android:priority="-1">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="content" />
+                <data android:mimeType="audio/*"/>
+                <data android:mimeType="application/ogg"/>
+                <data android:mimeType="application/x-ogg"/>
+                <data android:mimeType="application/itunes"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainTouchAsisten" android:label="AI Apkmanager"></activity>
+        <activity android:name=".MainPaket" android:label="AI paket"></activity>
+        <activity android:name=".MainOpencv" android:label="AI set mata"></activity>
+        <activity android:name=".MainServer" android:label="AI server"></activity>
+        <activity android:name=".MainCatatan" android:label="AI catatan"></activity>
+        <activity android:name=".MainMemori" android:label="AI memori manager"></activity>
+        <activity android:name=".MainTerminal" android:label="AI xterm"></activity>
+        <activity android:name=".MainSubdomner" 
+            android:label="Subdomner idx"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name="com.tools.Kompas" android:label="AI kompas"></activity>
+        <activity android:name="com.tools.FileExploler" android:label="AI simple fileman"></activity>
+        <activity android:name="com.status.ActivityStatus" android:label="AI status"></activity>
+        <activity android:name="com.status.TaskList" android:label="AI task status"></activity>
+        <activity 
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:name=".Pengaturan" >
+        </activity>
+
+        <service android:enabled="true" android:name=".ServiceBoot"></service>
+        <service android:enabled="true" android:name=".ServiceMicHelper"></service>
+        <service android:enabled="true" android:name=".ServiceTTS"></service>
+        <service android:enabled="true" android:name="com.status.ServiceStatus"></service>
+    
+        <service android:enabled="true" android:name="com.tools.AudioService"
+            android:exported="true"
+            android:label="Shun Audio">
+            <intent-filter>
+                <action android:name="android.media.browse.MediaBrowserService" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.cpu.MouseWifi"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/mouse" />
+        </service>
+            
+        <service
+            android:name="com.cpu.input.KeyboardWifi"
+            android:permission="android.permission.BIND_INPUT_METHOD">
+            <intent-filter>
+                <action android:name="android.view.InputMethod" />
+            </intent-filter>
+            <meta-data 
+                android:name="android.view.im"
+                android:resource="@xml/keybwifi">
+            </meta-data>
+        </service>
+        
+        <receiver android:name=".ReceiverThread"/>
+        <receiver
+            android:name=".ReceiverBoot">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>
+
+<!--
+    <?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cpu"
+
+    android:versionCode="7"
+    android:versionName="1.0" >
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="16" />
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.front" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.front.autofocus" android:required="false"/>
+
+    <application
+        android:allowBackup="true"
+        android:label="Jin Asisten"
+        android:icon="@drawable/ic_launcher"
+        android:theme="@android:style/Theme.Holo.Light"
+        android:resizeableActivity = "true">
+        <activity
+            android:name=".MainAsisten"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+         <activity 
+            android:name=".MainBrowser"
+            android:label="Browser">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http"/>
+                <data android:scheme="https"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainEditor" >
+        </activity>
+        <activity 
+            android:name=".MainFileManager" 
+            android:label="Editor">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.EDIT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.GADGET"/>
+                <data android:host="*" android:mimeType="*/*" android:pathPattern=".*\\.txt" android:scheme="file"/>
+                <data android:host="*" android:mimeType="*/*" android:pathPattern=".*\\.php" android:scheme="file"/>
+                <data android:host="*" android:mimeType="*/*" android:pathPattern=".*\\.css" android:scheme="file"/>
+                <data android:host="*" android:mimeType="*/*" android:pathPattern=".*\\.js" android:scheme="file"/>
+                <data android:host="*" android:mimeType="*/*" android:pathPattern=".*\\.html" android:scheme="file"/>
+                <data android:host="*" android:mimeType="*/*" android:pathPattern=".*\\..*" android:scheme="file"/>
+                <data android:host="*" android:mimeType="*/*" android:pathPattern=".*" android:scheme="file"/>
+                <data android:mimeType="*/*"/>
+            </intent-filter>
+        </activity>
+        <activity 
+            android:name="com.tools.AudioPreview"
+            android:theme="@android:style/Theme.Dialog"
+            android:taskAffinity=""
+            android:label="Musik"
+            android:excludeFromRecents="true" 
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="file"/>
+                <data android:mimeType="audio/*"/>
+                <data android:mimeType="application/ogg"/>
+                <data android:mimeType="application/x-ogg"/>
+                <data android:mimeType="application/itunes"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http" />
+                <data android:mimeType="audio/*"/>
+                <data android:mimeType="application/ogg"/>
+                <data android:mimeType="application/x-ogg"/>
+                <data android:mimeType="application/itunes"/>
+            </intent-filter>
+            <intent-filter android:priority="-1">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="content" />
+                <data android:mimeType="audio/*"/>
+                <data android:mimeType="application/ogg"/>
+                <data android:mimeType="application/x-ogg"/>
+                <data android:mimeType="application/itunes"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainTouchAsisten" android:label="Apkmanager"></activity>
+        <activity android:name=".MainPaket" android:label="Package Manager"></activity>
+        <activity android:name=".MainOpencv" android:label="Opencv Settings"></activity>
+        <activity android:name=".MainServer" android:label="Mobile Server"></activity>
+        <activity android:name=".MainCatatan" android:label="Note"></activity>
+        <activity android:name=".MainMemori" android:label="Database Manager"></activity>
+        <activity android:name=".MainTerminal" android:label="Terminal Shell"></activity>
+        <activity android:name=".MainSubdomner" 
+            android:label="Subdomner idx"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name="com.tools.Kompas" android:label="Tools Kompas"></activity>
+        <activity android:name="com.tools.FileExploler" android:label="Tools FileExploler"></activity>
+        <activity android:name="com.status.ActivityStatus" android:label="System Monitor"></activity>
+        <activity android:name="com.status.TaskList" android:label="Task List"></activity>
+        <activity 
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:label="Settings"
+            android:name=".Pengaturan" >
+        </activity>
+
+        <service android:enabled="true" android:name=".ServiceBoot"></service>
+        <service android:enabled="true" android:name=".ServiceMicHelper"></service>
+        <service android:enabled="true" android:name=".ServiceTTS"></service>
+        <service android:enabled="true" android:name="com.status.ServiceStatus"></service>
+    
+        <service android:enabled="true" android:name="com.tools.AudioService"
+            android:exported="true"
+            android:label="Shun Audio">
+            <intent-filter>
+                <action android:name="android.media.browse.MediaBrowserService" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.cpu.MouseWifi"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/mouse" />
+        </service>
+            
+        <service
+            android:name="com.cpu.input.KeyboardWifi"
+            android:permission="android.permission.BIND_INPUT_METHOD">
+            <intent-filter>
+                <action android:name="android.view.InputMethod" />
+            </intent-filter>
+            <meta-data 
+                android:name="android.view.im"
+                android:resource="@xml/keybwifi">
+            </meta-data>
+        </service>
+        
+        <receiver android:name=".ReceiverThread"/>
+        <receiver
+            android:name=".ReceiverBoot">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+    
+    
+    </application>
+
+</manifest>
+
+
+    -->
